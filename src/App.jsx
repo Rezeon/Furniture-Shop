@@ -8,7 +8,6 @@ import { LayoutPage } from "./layout/layout";
 import { SettingAccount } from "./page/setting.account";
 import { ProductItem } from "./page/product";
 import { AdminDashboard } from "./page/admin.dashboard";
-
 function App() {
   return (
     <BrowserRouter>
@@ -25,6 +24,7 @@ function App() {
           <Route path="/admin-product" element={<AdminDashboard />} />
         </Routes>
       </LayoutPage>
+      
     </BrowserRouter>
   );
 }

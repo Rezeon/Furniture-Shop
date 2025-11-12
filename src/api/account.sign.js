@@ -168,8 +168,8 @@ export const apiClient = () => {
   // Membutuhkan AuthMiddleware
   const orderApi = {
       // POST /oder/checkout
-      checkout: async () => {
-        return axios.post(`${BASE_URL}/oder/checkout`, authHeadersJson());
+      checkout: async (payload) => {
+        return axios.post(`${BASE_URL}/oder/checkout`,payload, authHeadersJson());
       },
       // GET /oder/
       getUserOrders: async () => {
