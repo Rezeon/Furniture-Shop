@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+
+.felipa-regular {
+  font-family: "Felipa", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.sofia-regular {
+  font-family: "Sofia", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
