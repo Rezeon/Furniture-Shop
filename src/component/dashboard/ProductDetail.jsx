@@ -1,4 +1,4 @@
-import Info from "../../assets/Info.svg";
+import Info from "../../assets/info.svg";
 
 export function DetailProduct() {
   return (
