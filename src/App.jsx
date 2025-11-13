@@ -14,16 +14,16 @@ function App() {
       <Routes>
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
-      </Routes>
+      
      
-        <Routes element={<LayoutPage />}>
+        <Route element={<LayoutPage />}>
           <Route path="/" element={<Dashboard />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/product" element={<ProductItem />} />
           <Route path="/setting" element={<SettingAccount />} />
           <Route path="/admin-product" element={<AdminDashboard />} />
-        </Routes>
-     
+        </Route>
+     </Routes>
       
     </BrowserRouter>
   );
