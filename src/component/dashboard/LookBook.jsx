@@ -46,8 +46,8 @@ if (!token) {
             LOOKBOOK
           </p>
         </div>
-        <div className="w-full h-full flex flex-col justify-between p-2 md:p-6 text-white ">
-          <h1 className="gentium-plus-bold text-4xl">
+        <div id="detail" className="w-full h-full flex flex-col justify-between p-1 md:p-6 text-white ">
+          <h1 className="gentium-plus-bold text-2xl md:text-4xl">
             {selectedProduct?.name}
           </h1>
           <p className="gentium-plus-regular">{selectedProduct?.description}</p>
