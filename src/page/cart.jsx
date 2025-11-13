@@ -1,6 +1,7 @@
 import { Trash2 } from "lucide-react";
 import { apiClient } from "../api/account.sign";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useState } from "react";
 
 const api = apiClient();
 // Custom hook didefinisikan di luar komponen Cart untuk praktik terbaik
@@ -23,11 +24,11 @@ export function Cart() {
     isError: isCartError,
   } = useGetProductUser();
   const queryClient = useQueryClient();
+  const [url, setUrl] = useState({});
   const Checkout = useMutation({
     mutationFn: async () => {
       const response = await api.order.checkout();
-      console.log("Response Object:", response);
-      console.log("Payment URL:", response.paymentUrl);
+      setUrl(response);
       window.location.href = response.paymentUrl;
     },
     onSuccess: () => {
@@ -97,8 +98,11 @@ export function Cart() {
   const handleDelete = (id) => {
     deleteMutation.mutate(id);
   };
-  const handleCheckout = () => {
-    Checkout.mutate();
+  const handleCheckout = async () => {
+    await Checkout.mutate();
+    console.log("Response Object:", url);
+    console.log("Payment URL:", url.paymentUrl);
+    return (window.location.href = url.paymentUrl);
   };
 
   const handleUpdate = (cartItemId, currentQuantity, condition) => {
