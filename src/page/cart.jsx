@@ -24,32 +24,28 @@ export function Cart() {
     isError: isCartError,
   } = useGetProductUser();
   const queryClient = useQueryClient();
-  // Hapus: const [url, setUrl] = useState({});
-
-  const Checkout = useMutation({
-    mutationFn: async () => {
-      // MutationFn sekarang hanya mengembalikan data
-      const response = await api.order.checkout();
-      return response;
-    },
-    onSuccess: (data) => {
-      // 🚨 Data respons kini tersedia di sini
-      const paymentUrl = data?.paymentUrl;
-
-      if (!paymentUrl) {
-        console.error("URL missing:", data);
-        alert("Gagal: URL pembayaran tidak ditemukan.");
-        return;
-      }
-
-      console.log("Response Object:", data);
-      console.log("Payment URL:", paymentUrl);
-      window.location.href = paymentUrl;
-    },
-    onError: (err) => {
-      alert(`Gagal: ${err.message || "Error server."}`);
-    },
-  });
+  //const Checkout = useMutation({
+  //  mutationFn: async () => {
+  //    const response = await api.order.checkout();
+  //    return response;
+  //  },
+  //  onSuccess: (data) => {
+  //    const paymentUrl = data?.paymentUrl;
+//
+  //    if (!paymentUrl) {
+  //      console.error("URL missing:", data);
+  //      alert("Gagal: URL pembayaran tidak ditemukan.");
+  //      return;
+  //    }
+//
+  //    console.log("Response Object:", data);
+  //    console.log("Payment URL:", paymentUrl);
+  //    window.location.href = paymentUrl;
+  //  },
+  //  onError: (err) => {
+  //    alert(`Gagal: ${err.message || "Error server."}`);
+  //  },
+  //});
 
   const updateMutation = useMutation({
     mutationFn: async ({ id, payload }) => {
@@ -111,8 +107,24 @@ export function Cart() {
   const handleDelete = (id) => {
     deleteMutation.mutate(id);
   };
-  const handleCheckout = () => {
-    Checkout.mutate();
+  const handleCheckout = async () => {
+    try {
+      const response = await api.order.checkout()
+      const paymentUrl = response?.paymentUrl;
+      console.log(paymentUrl)
+      if (!paymentUrl) {
+        console.error("URL missing:", response);
+        alert("Gagal: URL pembayaran tidak ditemukan.");
+        return;
+      }
+
+      console.log("Response Object:", response);
+      console.log("Payment URL:", paymentUrl);
+      window.location.href = paymentUrl;
+    } catch (err) {
+      alert(`Gagal: ${err.message || "Error server."}`);
+    }
+    
   };
 
   const handleUpdate = (cartItemId, currentQuantity, condition) => {
