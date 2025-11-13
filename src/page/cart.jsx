@@ -26,17 +26,19 @@ export function Cart() {
   const Checkout = useMutation({
     mutationFn: async () => {
       const response = await api.order.checkout();
+      console.log("Response Object:", response);
+      console.log("Payment URL:", response.paymentUrl);
       window.location.href = response.paymentUrl;
     },
     onSuccess: () => {
-      alert("pembayaran sukses")
+      alert("pembayaran sukses");
     },
     onError: (err) => {
       alert(`Gagal: ${err.message || "Error server."}`);
     },
   });
   const updateMutation = useMutation({
-    mutationFn: async ({id, payload}) => {
+    mutationFn: async ({ id, payload }) => {
       await api.cart.updateCartItem(id, payload);
     },
     onSuccess: () => {
@@ -227,7 +229,10 @@ export function Cart() {
         </div>
 
         <div className="w-full flex flex-col justify-between text-xl mt-4">
-          <div onClick={() => handleCheckout()} className="w-full p-3 cursor-pointer flex justify-center items-center rounded-xl text-white cursor-pointer bg-gray-900 hover:bg-gray-700 transition">
+          <div
+            onClick={() => handleCheckout()}
+            className="w-full p-3 cursor-pointer flex justify-center items-center rounded-xl text-white cursor-pointer bg-gray-900 hover:bg-gray-700 transition"
+          >
             Checkout
           </div>
         </div>
