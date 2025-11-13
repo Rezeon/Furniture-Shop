@@ -110,7 +110,7 @@ export function Cart() {
   const handleCheckout = async () => {
     try {
       const response = await api.order.checkout()
-      const paymentUrl = response?.paymentUrl;
+      const paymentUrl = response?.data.paymentUrl;
       console.log(paymentUrl)
       if (!paymentUrl) {
         console.error("URL missing:", response);
