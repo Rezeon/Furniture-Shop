@@ -1,5 +1,5 @@
-import { Footer } from "../components/Footer";
-import { Header } from "./components/Header";
+import { Footer } from "../component/Footer";
+import { Header } from "./header";
 import { Outlet } from "react-router-dom";
 
 export default function LayoutPage() {
