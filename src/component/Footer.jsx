@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <div className="w-full bg-blue-950 h-lvh flex flex-col">
+    <div className="w-full bg-blue-950 h-auto md:h-lvh flex flex-col">
       <div className="text-white flex md:flex-row flex-col  border-b border-white ">
         <div className="text-white white flex flex-col gap-6 w-full items-start justify-around p-5 ">
           <p>STORE</p>
