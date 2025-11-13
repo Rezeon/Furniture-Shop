@@ -24,20 +24,33 @@ export function Cart() {
     isError: isCartError,
   } = useGetProductUser();
   const queryClient = useQueryClient();
-  const [url, setUrl] = useState({});
+  // Hapus: const [url, setUrl] = useState({});
+
   const Checkout = useMutation({
     mutationFn: async () => {
+      // MutationFn sekarang hanya mengembalikan data
       const response = await api.order.checkout();
-      setUrl(response);
-      window.location.href = response.paymentUrl;
+      return response;
     },
-    onSuccess: () => {
-      alert("pembayaran sukses");
+    onSuccess: (data) => {
+      // 🚨 Data respons kini tersedia di sini
+      const paymentUrl = data?.paymentUrl;
+
+      if (!paymentUrl) {
+        console.error("URL missing:", data);
+        alert("Gagal: URL pembayaran tidak ditemukan.");
+        return;
+      }
+
+      console.log("Response Object:", data);
+      console.log("Payment URL:", paymentUrl);
+      window.location.href = paymentUrl;
     },
     onError: (err) => {
       alert(`Gagal: ${err.message || "Error server."}`);
     },
   });
+
   const updateMutation = useMutation({
     mutationFn: async ({ id, payload }) => {
       await api.cart.updateCartItem(id, payload);
@@ -98,11 +111,8 @@ export function Cart() {
   const handleDelete = (id) => {
     deleteMutation.mutate(id);
   };
-  const handleCheckout = async () => {
-    await Checkout.mutate();
-    console.log("Response Object:", url);
-    console.log("Payment URL:", url.paymentUrl);
-    return (window.location.href = url.paymentUrl);
+  const handleCheckout = () => {
+    Checkout.mutate();
   };
 
   const handleUpdate = (cartItemId, currentQuantity, condition) => {
