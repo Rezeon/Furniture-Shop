@@ -27,10 +27,10 @@ export function Footer() {
           <a href="">Account</a>
         </div>
       </div>
-      <div className="felipa-regular text-8xl h-1/2 font-bold w-full p-7 flex items-center justify-center">
+      <div className="felipa-regular md:text-8xl text-2xl h-auto md:h-1/2 font-bold w-full md:p-7  p-2 flex items-center justify-center">
         RHEYNO FURNITURE
       </div>
-      <div className="w-full h-1/8 flex items-center justify-center p-3 gentium-plus-regular border-t border-b border-white">
+      <div className="w-full h-auto md:h-1/8 flex items-center justify-center p-3 gentium-plus-regular border-t border-b border-white">
         © REZEON 2025 | RHEYNO FERNANDO
       </div>
     </div>
