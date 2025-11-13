@@ -29,7 +29,7 @@ export function Cart() {
       window.location.href = response.order.paymentUrl;
     },
     onSuccess: () => {
-      
+      alert("pembayaran sukses")
     },
     onError: (err) => {
       alert(`Gagal: ${err.message || "Error server."}`);
