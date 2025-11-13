@@ -21,10 +21,13 @@ const CardNav = ({
   const cardsRef = useRef([]);
   const tlRef = useRef(null);
   const navigate = useNavigate()
-  const navButton = ( ) => {
-if (!token) { navigate("/signin")}
-    navigate("/cart")
+  const navButton = () => {
+  if (!token) {
+    navigate("/signin");
+    return;
   }
+  navigate("/cart");
+};
   const calculateHeight = () => {
     const navEl = navRef.current;
     if (!navEl) return 260;
