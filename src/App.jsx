@@ -4,7 +4,7 @@ import { Dashboard } from "./page/dashboard";
 import { SignUp } from "./page/account/signup";
 import { SignIn } from "./page/account/signin";
 import { Cart } from "./page/cart";
-import { LayoutPage } from "./layout/layout";
+import LayoutPage from "./layout/layout";
 import { SettingAccount } from "./page/setting.account";
 import { ProductItem } from "./page/product";
 import { AdminDashboard } from "./page/admin.dashboard";
