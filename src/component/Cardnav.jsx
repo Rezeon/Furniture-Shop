@@ -184,9 +184,7 @@ const CardNav = ({
             <p className="hover:underline hover:underline-offset-8 ">
               Bag
             </p>
-            <p className="rounded-full aspect-square bg-gray-900 p-1 w-7 text-center flex items-center justify-center ">
-              0
-            </p>
+            
           </button>
         </div>
 
@@ -226,6 +224,16 @@ const CardNav = ({
               </div>
             </div>
           ))}
+{/* Tombol Bag untuk mobile */}
+<div className="flex justify-center md:hidden mt-4">
+  <button
+    type="button"
+    onClick={navButton}
+    className="flex gap-2 items-center bg-gray-800 text-white px-5 py-2 rounded-lg shadow-md hover:bg-gray-700 transition-colors duration-300"
+  >
+    <p>Bag</p>
+  </button>
+</div>
         </div>
       </nav>
     </div>
