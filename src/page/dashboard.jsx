@@ -92,10 +92,10 @@ export function Dashboard() {
         </div>
       </div>
       <div className="w-full flex justify-center items-center h-auto relative  bg-white">
-        <img src={background1} className=" object-cover" alt="" />
+        <img src={background1} className=" w-[40%] md:w-full md:object-cover" alt="" />
         <img
           src={background2}
-          className="z-1 absolute  object-center "
+          className="w-[30%] md:w-auto  z-1 absolute  md:object-center "
           alt=""
         />
       </div>
