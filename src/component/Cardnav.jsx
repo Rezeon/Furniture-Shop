@@ -22,6 +22,7 @@ const CardNav = ({
   const tlRef = useRef(null);
   const navigate = useNavigate()
   const navButton = ( ) => {
+if (!token) { navigate ("/signin")}
     navigate("/cart")
   }
   const calculateHeight = () => {
