@@ -1,10 +1,12 @@
 import { ShoppingBag } from "lucide-react";
 import { apiClient } from "../../api/account.sign";
+import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 
 const api = apiClient();
 export function LookBok({ selectedProduct }) {
- 
+   const token = localStorage.getItem("token")
+  const navigate = useNavigate()
   const addCart = useMutation({
     mutationFn: (pId) => {
       return  api.cart.addToCart(pId);
@@ -20,6 +22,10 @@ export function LookBok({ selectedProduct }) {
     // Memastikan ID valid sebelum mengirim
     if (!id) {
         alert("ID produk tidak valid.");
+        return;
+    }
+if (!token) {
+        navigate("/signin") 
         return;
     }
     
