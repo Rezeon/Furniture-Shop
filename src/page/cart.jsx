@@ -26,7 +26,7 @@ export function Cart() {
   const Checkout = useMutation({
     mutationFn: async () => {
       const response = await api.order.checkout();
-      window.location.href = response.order.paymentUrl;
+      window.location.href = response.paymentUrl;
     },
     onSuccess: () => {
       alert("pembayaran sukses")
