@@ -95,7 +95,7 @@ export function Dashboard() {
         <img src={background1} className=" w-[40%] md:w-full md:object-cover" alt="" />
         <img
           src={background2}
-          className="w-[30%] md:w-auto  z-1 absolute  md:object-center right-0"
+          className="w-[30%] md:w-auto  z-1 md:absolute  md:object-center"
           alt=""
         />
       </div>
