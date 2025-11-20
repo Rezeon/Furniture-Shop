@@ -1,6 +1,6 @@
 import { Footer } from "../component/Footer";
 import { Header } from "./header";
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/react";
 import { Outlet } from "react-router-dom";
 
 export default function LayoutPage() {
