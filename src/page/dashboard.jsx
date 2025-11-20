@@ -92,10 +92,10 @@ export function Dashboard() {
         </div>
       </div>
       <div className="w-full flex justify-center items-center h-auto relative  bg-white">
-        <img src={background1} className=" object-cover" alt="" />
+        <img src={background1} className=" w-[40%] md:w-full md:object-cover" alt="" />
         <img
           src={background2}
-          className="z-1 absolute  object-center "
+          className="w-[30%] md:w-auto  z-1 md:absolute  md:object-center"
           alt=""
         />
       </div>
@@ -136,8 +136,8 @@ export function Dashboard() {
       <div className="w-full flex flex-col justify-center items-center h-lvh relative  bg-white">
         <div className="w-full md:w-[80%] h-auto p-2 flex justify-center items-center relative">
           <img src={Email} alt="s" className="w-full object-cover absolute" />
-          <div className="w-[80%] md:w-[50%] h-auto p-2 flex flex-col items-center justify-center z-1 gap-16">
-            <h1 className="text-7xl text-white gentium-plus-regular ">
+          <div className="w-[80%] md:w-[50%] h-auto p-2 flex flex-col items-center justify-center z-1 gap-1 md:gap-16">
+            <h1 className="text-2xl md:text-7xl text-white gentium-plus-regular ">
               Be part of our club for discount
             </h1>
             <input

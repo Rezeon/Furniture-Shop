@@ -1,14 +1,18 @@
 import { Footer } from "../component/Footer";
 import { Header } from "./header";
 import { Analytics } from '@vercel/analytics/react';
+import { Outlet } from "react-router-dom";
 
-export function LayoutPage({ children }) {
+export default function LayoutPage() {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-1 overflow-y-auto min-w-0 ">{children}</main>
+
+      <main className="flex-1 overflow-y-auto min-w-0 ">
+        <Outlet />
+      </main>
       <Analytics />
       <Footer />
-    </>
+    </div>
   );
 }

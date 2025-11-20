@@ -1,5 +1,12 @@
 export function ListProduct({ Barang, setSelectedProduct, isProductsLoading, isProductsError }) {
+const scrollTo = (id) => {
+  const section = document.getElementById(id);
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth" });
+  }
+};
    const handleOpenModal = (product) => {
+scrollTo('detail') 
     setSelectedProduct(product);
   };
   if (isProductsLoading) {
