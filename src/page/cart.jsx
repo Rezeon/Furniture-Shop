@@ -2,6 +2,7 @@ import { Trash2 } from "lucide-react";
 import { apiClient } from "../api/account.sign";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
+import { ClipLoader } from "react-spinners";
 
 const api = apiClient();
 // Custom hook didefinisikan di luar komponen Cart untuk praktik terbaik
@@ -78,16 +79,22 @@ export function Cart() {
 
   if (isPendingCart) {
     return (
-      <div className="p-8 text-center text-white mt-[60px]">
-        Memuat keranjang belanja...
+      <div className="w-full h-lvh p-3 flex items-center mt-[60px] bg-blue-950 justify-center text-white">
+        <ClipLoader
+          color={"#FFFFFF"}
+          loading={isPendingCart}
+          size={50}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
       </div>
     );
   }
 
   if (isCartError) {
     return (
-      <div className="p-8 text-center text-red-500 mt-[60px]">
-        Gagal memuat keranjang. Silakan coba lagi.
+      <div className="w-full h-lvh p-3 flex items-center mt-[60px] bg-blue-950 justify-center text-white">
+        No cart exists
       </div>
     );
   }

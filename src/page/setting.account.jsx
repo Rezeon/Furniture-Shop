@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { apiClient } from "../api/account.sign";
 import { useMutation, useQuery } from "@tanstack/react-query";
+import { ClipLoader, ClockLoader } from "react-spinners";
 
 const api = apiClient();
 
@@ -91,12 +92,22 @@ export function SettingAccount() {
     }
   }, [userData]);
   if (isPending) {
-    return <div className="p-4">Memuat data pengguna...</div>;
+    return (
+      <div className="w-full h-lvh p-3 flex items-center mt-[60px] bg-blue-950 justify-center text-white">
+        <ClockLoader
+          color={"#FFFFFF"}
+          loading={isPending}
+          size={50}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      </div>
+    )
   }
 
   if (isError) {
     return (
-      <div className="p-4 text-red-500">Error memuat data: {error.message}</div>
+      <div className="w-full h-lvh p-3 flex items-center mt-[60px] bg-blue-950 justify-center text-white">Error memuat data: {error.message}</div>
     );
   }
 
@@ -213,11 +224,10 @@ export function SettingAccount() {
           <button
             type="submit"
             disabled={updateMutation.isPending}
-            className={`w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white ${
-              updateMutation.isPending
-                ? "bg-gray-400"
-                : "bg-blue-600 hover:bg-blue-700"
-            } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500`}
+            className={`w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white ${updateMutation.isPending
+              ? "bg-gray-400"
+              : "bg-blue-600 hover:bg-blue-700"
+              } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500`}
           >
             {updateMutation.isPending ? "Memperbarui..." : "Simpan Perubahan"}
           </button>
@@ -271,22 +281,20 @@ export function SettingAccount() {
           <button
             type="submit"
             disabled={updateMutation.isPending}
-            className={`w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white ${
-              updateMutation.isPending
-                ? "bg-gray-400"
-                : "bg-blue-600 hover:bg-blue-700"
-            } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500`}
+            className={`w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white ${updateMutation.isPending
+              ? "bg-gray-400"
+              : "bg-blue-600 hover:bg-blue-700"
+              } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500`}
           >
             {updateMutation.isPending ? "Memperbarui..." : "Simpan Perubahan"}
           </button>
         </form>
         <button
           className={`mt-4 w-full py-2 px-4 rounded-md shadow-sm text-sm font-medium text-white 
-      ${
-        deleteMutation.isPending
-          ? "bg-red-300 cursor-not-allowed"
-          : "bg-red-600 hover:bg-red-700"
-      }`}
+      ${deleteMutation.isPending
+              ? "bg-red-300 cursor-not-allowed"
+              : "bg-red-600 hover:bg-red-700"
+            }`}
           onClick={handleDelete}
           disabled={deleteMutation.isPending}
         >
